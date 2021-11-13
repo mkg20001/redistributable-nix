@@ -2,15 +2,11 @@ name: Update nixpkgs
 permissions:
   contents: write
 on:
+  schedule:
+    - cron: '* * * * */15'
   push:
     branches:
      - master
-#on:
-  #schedule:
-  #  - cron: '*/15 * * * *'
-  #push:
-  #  branches:
-  #    - main
 jobs:
   tests:
     runs-on: ubuntu-latest
