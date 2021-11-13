@@ -1,4 +1,6 @@
 name: Update nixpkgs
+permissions:
+  contents: write
 on:
   schedule:
     - cron: '*/15 * * * *'
@@ -14,5 +16,4 @@ jobs:
       git commit -m "update lockfile"
     - uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
