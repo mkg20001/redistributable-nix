@@ -17,7 +17,7 @@ jobs:
         git config --global user.email "redistributable-nix@mkg20001.io"
         git config --global user.name "Bot"
         nix flake update
-        if git diff-index --quiet HEAD --; then
+        if ! git diff-index --quiet HEAD --; then
           git add flake.lock
           git commit -m "update lockfile"
         fi
