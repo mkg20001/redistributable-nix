@@ -1,0 +1,18 @@
+name: Update nixpkgs
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: cachix/install-nix-action@v15
+    - run: |
+      nix flake update
+      git add flake.lock
+      git commit -m "update lockfile"
+    - uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
