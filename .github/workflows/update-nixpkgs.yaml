@@ -1,6 +1,10 @@
 name: Update nixpkgs
 permissions:
   contents: write
+on:
+  push:
+    branches:
+     - master
 #on:
   #schedule:
   #  - cron: '*/15 * * * *'
