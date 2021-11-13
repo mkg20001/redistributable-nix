@@ -20,7 +20,6 @@
       legacyPackages = forAllSystems (system: import nixpkgs {
         inherit system;
         config = {
-          allowUnfree = true;
           allowUnfreePredicate = x: if x ? meta.license then x.meta.license.redistributable else false;
         };
       });
