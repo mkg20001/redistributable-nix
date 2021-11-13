@@ -17,8 +17,10 @@ jobs:
         git config --global user.email "redistributable-nix@mkg20001.io"
         git config --global user.name "Bot"
         nix flake update
-        git add flake.lock
-        git commit -m "update lockfile"
+        if git diff-index --quiet HEAD --; then
+          git add flake.lock
+          git commit -m "update lockfile"
+        fi
     - uses: ad-m/github-push-action@master
       with:
         branch: ${{ github.ref }}
