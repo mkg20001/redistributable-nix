@@ -18,6 +18,8 @@ jobs:
     - uses: actions/checkout@v2
     - uses: cachix/install-nix-action@v15
     - run: |
+        git config --global user.email "redistributable-nix@mkg20001.io"
+        git config --global user.name "Bot"
         nix flake update
         git add flake.lock
         git commit -m "update lockfile"
